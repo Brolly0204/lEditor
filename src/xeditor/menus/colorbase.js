@@ -76,6 +76,7 @@ const XMenuColorBase = class {
       }
       // 只有选中了才有效果
       if (!selection.isSelectionEmpty()) {
+        // selection.saveRange();
         if (mode === 'palette') {
           this.createPalette();
         } else {

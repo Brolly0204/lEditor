@@ -7,43 +7,16 @@
     <title>xEditor 页面</title>
     <!-- <script src="dist/xeditor.js"></script> -->
     <!-- <script src="./src/xeditor/index.js"></script> -->
-    <style>
-      img {
-        -webkit-user-select: none;
-        user-select: none;
-      }
-      .w-e-tooltip {
-        position: absolute;
-        display: flex;
-        color: #f1f1f1;
-        background-color: rgba(0, 0, 0, 0.75);
-        box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
-        border-radius: 4px;
-        padding: 4px 5px 6px;
-        justify-content: center;
-        align-items: center;
-      }
-      .w-e-tooltip-item-wrapper {
-        cursor: pointer;
-        font-size: 14px;
-        margin: 0 5px;
-      }
-      .w-e-tooltip-up::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border: 5px solid rgba(0, 0, 0, 0);
-        border-top-color: rgba(0, 0, 0, 0.73);
-      }
-    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.11.0/vconsole.min.js"></script>
+    <script>
+      new VConsole()
+    </script>
   </head>
   <body>
     <h1>xEditor 测试</h1>
     <button onclick="previewHTML()">预览html</button>
     <div id="xe" class="xe"></div>
-    <div
+    <!-- <div
       id="sizeTool"
       class="w-e-tooltip w-e-tooltip-up"
       style="top:0; left:0; z-index:10001; display: none;"
@@ -55,34 +28,14 @@
       <div class="w-e-tooltip-item-wrapper" ><span data-size='50%'>50%</span></div>
       <div class="w-e-tooltip-item-wrapper" ><span data-size='100%'>100%</span></div>
       <div class="w-e-tooltip-item-wrapper" ><span data-size='100%'>重置</span></div>
-    </div>
+    </div> -->
     <div id="previewer"></div>
     <script>
-      var img = null
-      sizeTool.onclick = function  (event) {
-        if (img && event.target.dataset.size) {
-          img.style.width = event.target.dataset.size
-          sizeTool.style.display = 'none'
-        }
-      }
-      xe.addEventListener('click', function imageClick (event) {
-        if (event.target.tagName.toUpperCase() === 'IMG') {
-          img = event.target
-          const rect = event.target.getBoundingClientRect()
-          const left = rect.left
-          const top = rect.top
-          sizeTool.style.left = left + 'px'
-          sizeTool.style.top = top + 'px'
-          sizeTool.style.display = 'flex'
-        } else if (!sizeTool.contains(event.target)) {
-          sizeTool.style.display = 'none'
-        }
-      })
+      //  xe.addEventListener('contextmenu', function(e){
+      //   e.preventDefault();
+      // });
       function onImageLoaded (image) {
         console.log('onload', image)
-        // image.addEventListener('click', function imageClick() {
-        //   console.log('click')
-        // })
         image.onclick = function imageClick () {
           console.log('click')
         }

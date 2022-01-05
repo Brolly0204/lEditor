@@ -1,6 +1,11 @@
 // xEditor 配置文件
 /* eslint-disable no-alert */
 export default {
+  sizes: [
+    30,
+    50,
+    100,
+  ],
   menus: [ // 配置所显示菜单的功能
     'backcolor', // 背景颜色
     'forecolor', // 文本颜色

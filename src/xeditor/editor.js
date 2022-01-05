@@ -4,6 +4,7 @@ import config from './config';
 import Menu from './menus';
 import Text from './text';
 import Selection from './selection';
+import Tooltips from './tooltips';
 
 let editorId = 1; // 编辑器变化 多个编辑器自动累加
 
@@ -49,6 +50,8 @@ const XEditor = class {
       // 新建一行
       this.text.newline();
     }
+    this.tooltips = new Tooltips(this);
+    this.bindEvent();
   }
   /**
    * 设置层级
@@ -93,6 +96,27 @@ const XEditor = class {
       }
     });
     console.log(this.cfg);
+  }
+  /**
+   * 事件绑定
+   */
+  bindEvent() {
+    this.insertImgTarget = null;
+    const that = this;
+    this.$editor.on('click', (event) => {
+      const sizeTool = that.tooltips.container;
+      if (event.target.tagName.toUpperCase() === 'IMG') {
+        this.insertImgTarget = event.target;
+        const rect = this.insertImgTarget.getBoundingClientRect();
+        const { left } = rect;
+        const { top } = rect;
+        sizeTool.style.left = `${left + window.scrollX}px`;
+        sizeTool.style.top = `${top + window.scrollY}px`;
+        sizeTool.style.display = 'flex';
+      } else if (!sizeTool.contains(event.target)) {
+        sizeTool.style.display = 'none';
+      }
+    });
   }
   /**
   * 获取之前里面内容

@@ -341,6 +341,14 @@ const XDom = class {
     });
     return this;
   }
+  appendEle(child) {
+    this.forEach((elem) => {
+      child.forEach((cd) => {
+        elem.appendChild(cd);
+      });
+    });
+    return this;
+  }
   /**
    * XDom 向前添加元素元素
    *
@@ -480,7 +488,7 @@ $('div').on('click mouserover', () => {
 });
    * @returns {Object} XDOM 对象
    */
-  on(type, selector, fn) {
+  on(type, selector, fn, useCapture = false) {
     // 如果是字符串
     if (typeof type === 'string') {
       // 如果是普通的绑定 $('div').on('click mouseover');
@@ -497,7 +505,7 @@ $('div').on('click mouserover', () => {
           if (eventNoAgent) {
             events[parsedom.getDomId(el)][tp].push(selector);
             // 无代理
-            el.addEventListener(tp, selector, false);
+            el.addEventListener(tp, selector, useCapture);
           } else {
             const agentFn = (e = window.event) => {
               const { target } = e;
@@ -507,7 +515,7 @@ $('div').on('click mouserover', () => {
             };
             events[parsedom.getDomId(el)][tp].push(agentFn);
             // 有代理
-            el.addEventListener(tp, agentFn, false);
+            el.addEventListener(tp, agentFn, useCapture);
           }
         });
       });

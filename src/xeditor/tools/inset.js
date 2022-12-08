@@ -9,7 +9,7 @@ export default (result, self, isImage = true) => {
   const imgPattern = /https?:\/\/.+\.(jpg|gif|png|svg)/;
 
   if (imgPattern.test(urlVal) || isImage) {
-    text.handle('insertHTML', `<img class="xe-text-img" onload="onImageLoaded(this)" src="${urlVal}" />`);
+    text.handle('insertHTML', `<img class="xe-text-img" src="${urlVal}" />`);
   } else {
     text.handle('insertText', urlVal);
   }

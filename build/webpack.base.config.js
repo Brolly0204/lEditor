@@ -2,7 +2,6 @@
  * 公共配置
  */
 var path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -63,10 +62,5 @@ module.exports = {
         ]
       }
     ]
-  },
-  plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: path.resolve('../', 'index.html'),
-    // }),
-  ],
+  }
 };

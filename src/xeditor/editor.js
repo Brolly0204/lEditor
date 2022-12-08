@@ -95,7 +95,6 @@ const XEditor = class {
         this.cfg[conf] = cfg[conf];
       }
     });
-    console.log(this.cfg);
   }
   /**
    * 事件绑定

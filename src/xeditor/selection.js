@@ -43,7 +43,6 @@ const XSelection = class {
     }
     // 获取当前的选区
     const selection = window.getSelection();
-    console.log('selection', selection.toString());
     if (selection.rangeCount === 0) {
       return;
     }

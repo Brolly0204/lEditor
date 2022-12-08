@@ -28,7 +28,6 @@ export default function ajax(option) {
   const xhr = new XMLHttpRequest();
 
   const formData = new FormData();
-  console.log('option', option);
   if (option.data) {
     Object.keys(option.data).map(key => formData.append(key, option.data[key]));
   }

@@ -68,7 +68,13 @@ const XMenuColorBase = class {
     const {
       mode,
     } = cfg.color;
-    $(`#xe-${type}${editor.uid}`).on('click', () => {
+    $(`#xe-${type}${editor.uid}`).on('touchstart click', () => {
+      console.log(`#xe-${type}${editor.uid}`);
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        const range = sel.getRangeAt(0);
+        console.log('sel range', range.toString());
+      }
       const { selection, code } = editor;
       // 如果是源代码
       if (code) {
@@ -76,7 +82,11 @@ const XMenuColorBase = class {
       }
       // 只有选中了才有效果
       if (!selection.isSelectionEmpty()) {
-        // selection.saveRange();
+        if (selection.rangeCount > 0) {
+          selection.saveRange(selection.getRangeAt(0));
+        }
+        console.log('mode', mode);
+        console.log('createPalette', selection);
         if (mode === 'palette') {
           this.createPalette();
         } else {

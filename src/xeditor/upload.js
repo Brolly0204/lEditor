@@ -29,7 +29,6 @@ class Upload {
    */
   static ajax(files, self) {
     const { image, debug, alert } = self.editor.cfg;
-    console.log('cfg', files, image);
     const {
       ajaxurl,
       emptyLinkTip,

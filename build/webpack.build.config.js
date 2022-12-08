@@ -25,7 +25,7 @@ var plugins = [
 // 注入内容
 var oTime = new Date();
 var oAllTime = oTime.getFullYear() + '-' + (oTime.getMonth()+1) + '-' + oTime.getDate() + ' ' + oTime.getHours() + ':' + oTime.getMinutes() + ':' + oTime.getSeconds();
-plugins.push(new webpack.BannerPlugin('@ license 李梦龙\n@ version '+ pkg.version +'\n@ time '+ oAllTime));
+plugins.push(new webpack.BannerPlugin('@ license 拔都\n@ version '+ pkg.version +'\n@ time '+ oAllTime));
 
 if (isDev) {
   plugins.push(new webpack.HotModuleReplacementPlugin());

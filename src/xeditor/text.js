@@ -293,8 +293,6 @@ const XText = class {
   * @param {String} value 操作对应的值
   */
   handle(name, value) {
-    console.log(name, value);
-    console.log(this[name]);
     if (this[name]) {
       this[name]();
     } else {

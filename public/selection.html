@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>selection</title>
+</head>
+<body>
+  <div>
+    <div id="section" contenteditable="true">
+      不管你是小哥哥还是小姐姐，觉得东西不错？给个赞再走吧！
+    </div>
+    startIndex: <input id="startText" value="0" type="number">
+    posIndex：<input id="posText" value="1" type="number">
+    <!-- <textarea name="" id="bo" cols="30" rows="10"></textarea> -->
+    <button id="btn">选中</button>
+  </div>
+  <script>
+    btn.onclick = function () {
+      const startIndex = startText.value
+      const posIndex = posText.value
+      setCursorPos(document.getElementById('section'), startIndex, posIndex)
+    }
+    var setCursorPos = function(el, start, pos){
+      el.focus()
+      startNode = el.childNodes[0],
+      endNode = el.childNodes[0];
+      startNode.nodeValue = startNode.nodeValue.trim();
+      const range = document.createRange()
+      range.setStart(startNode, start)
+      range.setEnd(endNode, start + pos)
+      const sel = window.getSelection()
+      sel.removeAllRanges()
+      sel.addRange(range)
+    }
+  </script>
+</body>
+</html>
